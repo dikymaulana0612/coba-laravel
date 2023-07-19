@@ -114,15 +114,19 @@ class PostController extends Controller
         $title = $request->input('title');
         $content = $request->input('content');
 
-        $post = DB::table('posts')
+        DB::table('posts')
             ->where('id', $id)
-            ->update([
-                'title' => $title,
-                'content' => $content,
-                'updated_at' => date('Y-m-d H:i:s'),
-            ]);
-        dd($post);
-        // return redirect('posts/{id}');
+            ->update(
+                [
+                    'title' => $title,
+                    'content' => $content,
+                    'updated_at' => date('Y-m-d H:i:s'),
+                ]
+            );
+
+        dd($id);
+
+        // return redirect("posts/{$id}");
     }
 
     /**
